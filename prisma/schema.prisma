@@ -1,0 +1,32 @@
+// Configura la generazione del client Javascript usato dall'applicazione
+generator client {
+    // Usa il provider richiesto
+    provider = "prisma-client-js"
+}
+
+// Configura il tipo di database relazionale usato dal progetto
+datasource db {
+    // Prisma genererà SQL compatibile con MySQL
+    provider = "mysql"
+}
+
+// Definisce il model Product, che Prisma mapperà a una tabella MySQL
+model Product {
+    // Chiave primaria intera generata automaticamente dal database
+    id Int @id @default(autoincrement())
+
+    // Nome obbligatorio del prodotto
+    name String
+
+    // Prezzo con due cifre decimali
+    // Decimal preferibile a Float per valori monetari
+    price Decimal @db.Decimal(10, 2)
+
+    // Descrizione facoltativa: il ? rende la colonna nullable
+    description String?
+
+    // Data e ora assegnate automaticamente quando viene creato il record
+    createdAt DateTime @default(now())
+
+    inStock Boolean @default(true)
+}
