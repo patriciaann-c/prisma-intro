@@ -16,7 +16,7 @@ model Product {
     id Int @id @default(autoincrement())
 
     // Nome obbligatorio del prodotto
-    name String
+    name String?
 
     // Prezzo con due cifre decimali
     // Decimal preferibile a Float per valori monetari
